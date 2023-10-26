@@ -20,9 +20,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-      - run: mvn -f pom.xml clean test
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn sonar:sonar -Dsonar.projectKey=igoorj_spring-sonar -Dsonar.organization=dev-igoorj -Dsonar.host.url=https://sonarcloud.io
+      - run: mvn -f pom.xml clean test
